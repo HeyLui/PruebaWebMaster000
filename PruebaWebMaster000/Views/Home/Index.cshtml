@@ -1,0 +1,247 @@
+﻿@model IEnumerable<PruebaWebMaster000.Models.Restaurantes>
+
+
+<html>
+<head>
+
+    
+    
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    
+
+    <style type="text/css">
+        body {
+            padding-top: 70px;
+        }
+
+        .jumbotron {
+            color: #2c3e50;
+            background: #ecf0f1;
+        }
+
+        .navbar-inverse {
+            background: #2c3e50;
+            color: white;
+        }
+
+            .navbar-inverse .navbar-brand, .navbar-inverse a {
+                color: white;
+            }
+
+            .navbar-inverse .navbar-nav > li > a {
+                color: white;
+            }
+
+        .star-rating {
+            line-height: 32px;
+            font-size: 1.25em;
+        }
+
+            .star-rating .fa-star {
+                color: yellow;
+            }
+
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            /* Links inside the dropdown */
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                /* Change color of dropdown links on hover */
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+
+</head>
+
+<body>
+    
+
+    <div class="container">
+
+        <div class="container">
+            <div class="jumbotron justify-content-sm-center">
+                <h2>
+                    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                    <!-- I can replace the align left with icon span with: <i class="fas fa-camera-retro"></i>  -->
+                    Mejores Restaurantes
+                </h2>
+                <p>Disfruta de tus sabores favoritos!</p>
+                <div class="row" >
+                    <div class="dropdown" style="float:right; "  >
+
+                        <button class="dropbtn">Filtrar por</button>
+                        <div class="dropdown-content">
+                            <a href="#">Mayor votado</a>
+                            <a>Uso 2</a>
+                            <a>Uso 3</a>
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+
+            
+
+
+
+            <!--<tr>
+    <td>
+
+    </td>
+    <td>
+        <img width="100" src="" />
+    </td>
+    <td>
+        <img width="100" src="" />
+    </td>
+
+    <td>
+
+    </td>-->
+            @*<td>
+            @Html.DisplayFor(modelItem => item.Calificacion)
+        </td>*@
+
+            <!--</tr>-->
+
+
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-sm-6">
+
+                        <div class="thumbnail">
+                            <b>@Html.DisplayFor(modelItem => item.InformacionGeneral)</b>
+                            <img style="max-width:150px;max-height:150px;" src=" @Url.Action("convertirImagen", "Restaurantes", new { codigo = item.IdRestaurante, img = 1 })">
+                            <br />
+
+
+                            <img src="@Url.Action("convertirImagen1","Restaurantes",new { codigo1 = item.IdRestaurante, img = 1 })">
+                            <div class="badge " style="color:chartreuse;float:right">
+                                <b>HORARIOS DE ATENCION</b>
+                                @Html.DisplayFor(modelItem => item.IdHorariosNavigation.HorariosAtencion)
+                            </div>
+                            <hr />
+                            <div class="col ">
+                                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.IdRestaurante">Ver mas de este restaurante</a> 
+
+                            </div>
+                            
+                            @*<div class="container">
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="star-rating float-right">
+                                            <span class="fa fa-star-o" data-rating="1"></span>
+                                            <span class="fa fa-star-o" data-rating="2"></span>
+                                            <span class="fa fa-star-o" data-rating="3"></span>
+                                            <span class="fa fa-star-o" data-rating="4"></span>
+                                            <span class="fa fa-star-o" data-rating="5"></span>
+                                            <input type="hidden" name="whatever1" class="rating-value" value="0">
+                                            <input type="submit" class="btn-success btn-sm" />
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>*@
+
+
+                        </div>
+
+
+
+                    </div>
+                }
+            </div>
+        </div>
+        </div>
+
+            <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>
+<!-- Images
+https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20(1%20of%201)-5.jpg?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=92b4ef70a4e06a7e7bf54e1bde61b624&auto=format&fit=crop&w=750&q=80
+
+https://images.unsplash.com/photo-1505273471770-de630b5d5c5d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2745bcf1a765cddc7005657b22aa49a4&auto=format&fit=crop&w=1350&q=80
+
+https://images.unsplash.com/photo-1504982692992-f66b2dbd2f95?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8243c6f8f2a708cb70366d5994463c01&auto=format&fit=crop&w=750&q=80
+
+https://images.unsplash.com/photo-1460485260172-af9d8b7c0c95?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f215d676ca543685f4cf38536f7ee092&auto=format&fit=crop&w=750&q=80
+
+https://images.unsplash.com/photo-1486082570281-d942af5c39b7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2d06322d7df8c19c1e648c8c3a101d2d&auto=format&fit=crop&w=751&q=80
+
+https://images.unsplash.com/photo-1467810160588-c86c0deb5d16?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1e2ad249c3814d6110c569f71e338762&auto=format&fit=crop&w=750&q=80
+
+https://images.unsplash.com/photo-1482859454392-1b5326395032?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c09ceac7e0b8c2141f627c89a909d0dc&auto=format&fit=crop&w=750&q=80
+
+https://images.unsplash.com/photo-1445964047600-cdbdb873673d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f868e1785b37b19ebe2ec96882fb8d44&auto=format&fit=crop&w=856&q=80
+
+https://images.unsplash.com/photo-1484230725359-32f3d503571e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8225676351e24c725ab56d228e2706ce&auto=format&fit=crop&w=755&q=80 -->
+
+<script>
+    var $star_rating = $('.star-rating .fa');
+
+    var SetRatingStar = function () {
+        return $star_rating.each(function () {
+            if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+                return $(this).removeClass('fa-star-o').addClass('fa-star');
+            } else {
+                return $(this).removeClass('fa-star').addClass('fa-star-o');
+            }
+        });
+    };
+
+    $star_rating.on('click', function () {
+        $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+        return SetRatingStar();
+    });
+
+    SetRatingStar();
+    $(document).ready(function () {
+
+    });
+</script>

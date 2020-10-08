@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "DefaultConnection"
+    },
+    "mssql2": {
+      "type": "mssql",
+      "connectionId": "PruebaWebMaster000ContextConnection"
+    },
+    "mssql3": {
+      "type": "mssql",
+      "connectionId": "PruebaWebMasterContextConnection"
+    }
+  }
+}
